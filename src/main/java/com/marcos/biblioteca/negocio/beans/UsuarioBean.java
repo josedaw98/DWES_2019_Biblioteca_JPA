@@ -1,5 +1,8 @@
 package com.marcos.biblioteca.negocio.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -32,8 +36,16 @@ public class UsuarioBean {
 	@Column
 	private String direccion;
 
+	@OneToMany(mappedBy="usuario")
+	private List<PrestamoBean> prestamos = new ArrayList<PrestamoBean>();
 	
 	
+	private void AddPrestamos(PrestamoBean prestamo) {
+		if(!prestamos.contains(prestamo)) {
+			prestamos.add(prestamo);
+			prestamo.setUsuario(this);
+		}
+	}
 	
 	
 	public long getIdUsuario() {

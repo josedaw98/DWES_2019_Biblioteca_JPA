@@ -1,7 +1,10 @@
 package com.marcos.inicio;
 
 import com.marcos.biblioteca.negocio.beans.AutorBean;
+import com.marcos.biblioteca.negocio.beans.EjemplarBean;
 import com.marcos.biblioteca.negocio.beans.LibroBean;
+import com.marcos.biblioteca.negocio.beans.PrestamoBean;
+import com.marcos.biblioteca.negocio.beans.UsuarioBean;
 import com.marcos.bibloteca.negocio.CreateAutor;
 import com.marcos.bibloteca.negocio.CreateLibro;
 
@@ -10,6 +13,29 @@ public class Start {
 	public static void main(String[] args) {
 
 
+		EjemplarBean eje1 = new EjemplarBean();
+		eje1.setLocalizacion("oviedo");
+		
+		EjemplarBean eje2 = new EjemplarBean();
+		eje2.setLocalizacion("Gijon");
+		
+		UsuarioBean jose = new UsuarioBean();
+		jose.setNombre("jose");
+		jose.setDireccion("oviedo");
+		jose.setTelefono("650251425");
+		
+		UsuarioBean carlos = new UsuarioBean();
+		carlos.setNombre("carlos");
+		carlos.setDireccion("gijon");
+		carlos.setTelefono("650275635");
+		
+		PrestamoBean prestamo1=new PrestamoBean();
+		prestamo1.setFechaDevolucion("21/1/2000");
+		prestamo1.setFechaPrestamo("17/1/2000");
+		
+		PrestamoBean prestamo2=new PrestamoBean();
+		prestamo2.setFechaDevolucion("11/1/2000");
+		prestamo2.setFechaPrestamo("07/1/2000");
 		
 		
 		AutorBean autor1 = new AutorBean();
@@ -40,13 +66,18 @@ public class Start {
 		libro3.setTitulo("Los pilares de la tierra");
 
 		
-		
+		/*añadir*/
 		autor2.addLibros(libro1);
 		autor2.addLibros(libro2);
 		autor1.addLibros(libro3);
 		
 		
 		
+		
+		
+		
+		
+		/*persistir*/
 		CreateAutor createAutor = new CreateAutor();
 		createAutor.create(autor1);
 		createAutor.create(autor2);		
